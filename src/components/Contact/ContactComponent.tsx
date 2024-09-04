@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
 import gql from 'graphql-tag';
 import awsconfig from '../../../src/aws-exports';
+import './ContactComponent.module.css'; // Import your custom CSS file
 
 const client = new AWSAppSyncClient({
   url: awsconfig.aws_appsync_graphqlEndpoint,
@@ -46,21 +47,45 @@ const ContactComponent: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Email:
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-      </label>
-      <label>
-        Name:
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-      </label>
-      <label>
-        Comment:
-        <textarea value={comment} onChange={(e) => setComment(e.target.value)} required />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+    <div className="container mt-5">
+      <h2 className="text-center mb-4">Contact Us</h2>
+      <form onSubmit={handleSubmit} className="contact-form">
+        <div className="form-group mb-4">
+          <label>Email:</label>
+          <input
+            type="email"
+            className="form-control"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group mb-4">
+          <label>Name:</label>
+          <input
+            type="text"
+            className="form-control"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group mb-4">
+          <label>Comment:</label>
+          <textarea
+            className="form-control"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            required
+          />
+        </div>
+        <div className="d-flex justify-content-end">
+          <button type="submit" className="btn btn-primary mt-3">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 
