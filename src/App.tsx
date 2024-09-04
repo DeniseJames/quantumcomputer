@@ -1,37 +1,36 @@
+import React, { Suspense } from 'react';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavbarComponent from '../src/components/NavBar/NavBarComponent';
-import LoginComponent from './components/LogIn/LoginComponent';
-import SearchResults from '../src/components/SearchResults/SearchResultsComponent';
-import MachineLearningComponent from '../src/components/MachineLearning/MachineLearningComponent';
-import WebDesignComponent from '../src/components/WebDesign/WebDesignComponent';
-import TrainingComponent from '../src/components/Training/TrainingComponent';
-import ContactComponent from '../src/components/Contact/ContactComponent';
-import HomeComponent from './components/Home/HomeComponent';
 import './App.css'; // Import your CSS file
 
-
+// Lazy load the components
+const HomeComponent = React.lazy(() => import('./components/Home/HomeComponent'));
+const LoginComponent = React.lazy(() => import('./components/LogIn/LoginComponent'));
+const SearchResults = React.lazy(() => import('../src/components/SearchResults/SearchResultsComponent'));
+const MachineLearningComponent = React.lazy(() => import('../src/components/MachineLearning/MachineLearningComponent'));
+const WebDesignComponent = React.lazy(() => import('../src/components/WebDesign/WebDesignComponent'));
+const TrainingComponent = React.lazy(() => import('../src/components/Training/TrainingComponent'));
+const ContactComponent = React.lazy(() => import('../src/components/Contact/ContactComponent'));
 
 function App() {
-
-
   return (
     <Authenticator.Provider>
       <Router>
         <NavbarComponent />
         <div className="content-wrapper"> {/* Add this wrapper */}
-          <Routes>
-            <Route path="/" element={<HomeComponent />} />
-            <Route path="/login" element={<LoginComponent />} />
-            <Route path="/search" element={<SearchResults />} />
-            <Route path="/machine-learning" element={<MachineLearningComponent />} />
-            <Route path="/web-design" element={<WebDesignComponent />} />
-            <Route path="/training" element={<TrainingComponent />} />
-            <Route path="/contact" element={<ContactComponent />} />
-          </Routes>
-
-
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<HomeComponent />} />
+              <Route path="/login" element={<LoginComponent />} />
+              <Route path="/search" element={<SearchResults />} />
+              <Route path="/machine-learning" element={<MachineLearningComponent />} />
+              <Route path="/web-design" element={<WebDesignComponent />} />
+              <Route path="/training" element={<TrainingComponent />} />
+              <Route path="/contact" element={<ContactComponent />} />
+            </Routes>
+          </Suspense>
         </div>
       </Router>
     </Authenticator.Provider>
