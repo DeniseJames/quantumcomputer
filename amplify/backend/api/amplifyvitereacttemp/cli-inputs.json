@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "amplifyvitereacttemp",
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2025-09-03T13:17:33.175Z",
+      "keyDescription": "quantum computer learning 20240902"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
+  }
+}

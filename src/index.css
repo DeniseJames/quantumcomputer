@@ -1,0 +1,86 @@
+:root {
+  --bs-primary: #1E90FF; /* New Blue */
+  --bs-secondary: #3498DB; /* Blue */
+  --bs-success: #2ECC71; /* Green */
+  --bs-light: #F8F9FA; /* Very Light Gray */
+  --bs-dark: #333333; /* Dark Gray */
+  --bs-body-bg: var(--bs-light);
+  --bs-body-color: var(--bs-dark);
+}
+
+/* Apply global styles */
+body {
+  background-color: #F8F9FA;
+  color: var(--bs-body-color);
+  font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure Bootstrap variables are applied */
+.navbar {
+  background-color: var(--bs-primary) !important;
+}
+
+.nav-link {
+  color: var(--bs-body-color) !important;
+}
+
+.navbar-brand {
+  color: var(--bs-body-color) !important;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: white;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+ul {
+  padding-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0;
+  border: 1px solid black;
+  gap: 1px;
+  background-color: black;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+li {
+  background-color: white;
+  padding: 8px;
+}
+
+li:hover {
+  background: #dadbf9;
+}
+
+a {
+  font-weight: 800;
+  text-decoration: none;
+}
